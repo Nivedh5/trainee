@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table project</title>
+</head>
+<body>
+    <style>
+        table,tr,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table{
+            width: 1000px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th{
+            text-align: left;
+            background-color: aqua;
+            height: 40px;
+
+        }
+    </style>
+    <table>
+        <tr>
+            <th colspan="3"><h3>Invoice#12345ABC</h3></th>
+            <th colspan="3">18 Jul 2019</th>
+        </tr>
+        <tr>
+            <td>
+             <h3>Pay To:</h3>
+             <p>The Tech Park <br>123 Willow Street <br>Boulevard,LA-567892</p>
+            </td>
+            <td colspan="3">
+                <h3>Customer:</h3>
+                <p>John Lark <br>Dummy Appartments <br>276 Main Street <br>Boulevard,LA-567892</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Name/Description</th>
+            <th>Qty.</th>
+            <th>MRP</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td>Biryani</td>
+            <td>3</td>
+            <td>400</td>
+            <td>1200</td>
+        </tr>
+        <tr>
+            <td>Chocolate Shake</td>
+            <td>3</td>
+            <td>200</td>
+            <td>600</td>
+        </tr>
+        <tr>
+            <th colspan="3">Subtotal:</th>
+            <td>1800</td>
+        </tr>
+        <tr>
+            <th colspan="2">Tax</th>
+            <td>10%</td>
+            <td>180</td>
+        </tr>
+        <tr>
+            <th colspan="3">Grand Total:</th>
+            <td>Rs 1620</td>
+        </tr>
+    </table>
+    
+</body>
+</html>
