@@ -1,0 +1,14 @@
+h3{
+    color: rgb(102, 0, 255);
+    text-align: center;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+p{
+    color: blueviolet;
+    background-color: brown;
+    text-align: center;
+    line-height: 1.5;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+}
