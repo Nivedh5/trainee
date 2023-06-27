@@ -1,0 +1,16 @@
+#div1{
+    height: 500px;
+    width: 500px;
+    background-color: rgb(8, 198, 36);
+    overflow: auto;
+}
+img{
+    float: left;
+    margin-right: 10px;
+}
+#p1{
+    margin-left: 40px;
+}
+#div3{
+margin-left: 200px;
+}

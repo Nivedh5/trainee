@@ -1,0 +1,55 @@
+p{
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+}
+p{
+position: relative;
+background-color: aqua;
+border-radius: 100px;
+animation-name: fly;
+transform: translateX(1000px);
+transition-duration: 15s;
+transition-timing-function: ease-in;
+animation: fly 5s ;
+
+}
+@keyframes fly{
+    0%{
+        rotate: 180deg;
+        /* transform: translateX(50px); */   
+    }
+    10%{
+    rotate: 270deg;
+    left:40px;
+    }
+    15%{
+        rotate: -270deg;
+        left:100px;
+    }
+    25%{
+        rotate: 180deg;
+        left:150px;
+    }
+    35%{
+        rotate: -180deg;
+        left:200px;
+    }
+    50%{
+         rotate: 360deg;
+         left:300px;
+    }
+    65%{
+        rotate: -270deg;
+        left:400px;
+    }
+    75%{
+        rotate: 180deg;
+        left:500px;
+    }
+    95%{
+        rotate: -270deg;
+        left:40px;
+    }
+}
+

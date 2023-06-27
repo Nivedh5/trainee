@@ -1,0 +1,38 @@
+
+*{
+margin: 0;
+padding: 0;
+}
+#h1 {
+  height: 70px;
+  grid-area: h1;
+  background-color: blue;
+}
+#main-container {
+  display: grid;
+  grid-template-areas:
+    "h1 h1 h1 h1 h1"
+    "left main main main right"
+    "footer footer footer footer footer";
+}
+.div {
+  height: 500px;
+}
+#left {
+  grid-area: left;
+  background-color: aqua;
+  
+}
+#main {
+  grid-area: main;
+  background-color: bisque;
+}
+#right {
+  grid-area: right;
+  background-color: blueviolet;
+}
+#footer{
+    grid-area: footer;
+    background-color: rgb(214, 17, 17);
+    height: 50px;
+}
