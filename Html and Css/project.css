@@ -20,6 +20,7 @@
   padding: 28px;
   align-items: center;
   font-weight: 600;
+  margin-right: 15px;
 }
 .r1 {
   margin-right: 28px;
@@ -110,8 +111,9 @@ button {
   background-color: rgb(170, 210, 54);
   border: none;
   border-radius: 5px;
-  margin-top: -5px;
+  margin-top: -2px;
   cursor: pointer;
+  font-size: 12px;
 }
 #background-img {
   /* background-image: url(https://edyoda.s3.ap-south-1.amazonaws.com/public/landing-background.png); */
