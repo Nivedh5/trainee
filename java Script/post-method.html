@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/posts',{method:'POST',
+        headers:{ 'content-type':'application./json'},
+        body:JSON.stringify({
+           id:23,
+           userid:24,
+           name:"nive"
+        })
+    })
+    .then(res=> res.json())
+    .then(json=>print(json))
+        function print(result){
+            console.log(result)
+        var body=document.getElementById("div1")
+        for(var i=0;i<result.length;i++){
+        var para=document.createElement('p')
+        para.innerHTML=result[i]
+        console.log(result[i])
+        body.appendChild(para)
+
+        }
+    }
+    
+
+    </script>
+    <div id="div1">
+
+    </div>
+</body>
+</html>

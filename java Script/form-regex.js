@@ -18,7 +18,7 @@ username.addEventListener('input',function(e){
     }
     else{
         para_username.style.display='block'
-        // flag=false
+        flag=false
     }
 })
 password.addEventListener('input',function(p){
@@ -32,7 +32,7 @@ password.addEventListener('input',function(p){
     }
     else{
         para_password.style.display='block'
-        // flag1=false
+        flag1=false
     }
 })
 btn.addEventListener('click',function(a){
@@ -46,6 +46,9 @@ btn.addEventListener('click',function(a){
         // btn.disabled=false
         a.preventDefault()
         console.log("invalid")
+
     }
 })
+
+
 

@@ -28,6 +28,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 4px 4px 4px 1px;
 }
 #username{
     padding: 4px;
@@ -37,4 +38,7 @@
 }
 #btn-sub{
     padding: 4px;
+    color: rgb(246, 249, 248);
+    background-color: black;
+    box-shadow: 4px 2px 2px 2px;
 }
