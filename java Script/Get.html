@@ -92,9 +92,16 @@
         btn_delete.innerHTML="delete"
         btn_update.className=`btn_${result[i]?.id}`
         btn_delete.className="btn"
-        btn_delete.addEventListener('click',()=>{
+        btn_delete.addEventListener('click',(e)=>{
         //   getid(div3.id,result[i].id)
-          console.log(result[i].id)
+        //   console.log(result[i].id)
+        var value=e.target.closest("div")
+        value.remove()
+        alert("want to delete  "+result[i].title+"?")
+          result.splice(result[i],1)
+          console.log(arr)
+          getid(result[i].id)
+
             // console.log(result[i].id)
         })
         // container.appendChild(h1)
@@ -107,23 +114,23 @@
 
         }
      }
-    
-    //  fetch('https://fakestoreapi.com/products/1',{
-    //     method:'DELETE',
+    function getid(res){
+     fetch('https://fakestoreapi.com/products/'+res,{
+        method:'DELETE',
         
-    //  })
-    //  .then((res) => 
-    //  {
-    //     if(res.ok){
-    //         console.log("deleted sucess")
-    //     }
-    //     else{
-    //         console.log("not sucess")
-    //     }
+     })
+     .then((res) => 
+     {
+        if(res.ok){
+            console.log("deleted sucess")
+        }
+        else{
+            console.log("not sucess")
+        }
 
-    //  })
-    //  .catch((error)=>console.log("error"))
-    
+     })
+     .catch((error)=>console.log("error"))
+    }
     
     </script>
 </body>
