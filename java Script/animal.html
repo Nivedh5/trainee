@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div id="div">
+
+    </div> -->
+    <select name="select" id="select1" onchange="function1(this.value)">
+      <!-- <p id="para"></p> -->
+    </select>
+    <p></p>
+    <script>
+      // var count=0
+      let animals = [
+        "dog",
+        "chicken",
+        "cat",
+        "dog",
+        "chicken",
+        "chicken",
+        "rabbit",
+      ];
+      let animal_img = [
+        {
+          name: dog,
+          img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcREj22c-wMNL5IDmU99v8G7voUl17Yxm0JJqMLqttdPT4DnaB99zqVK7HWiNzjP3aZnzCEf-ikAqb2yiDk",
+        },
+        {
+            name:cat,
+            img:"https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+        }
+      ];
+      var container = document.getElementById("div");
+      // var select=document.createElement("select")
+      var select = document.getElementById("select1");
+      animals.map((items) => {
+        var option = document.createElement("option");
+        //  option.id=count
+        //  count++
+        var text = document.createTextNode(items);
+        option.appendChild(text);
+        select.appendChild(option);
+      });
+
+      let choice = document.getElementById("select1");
+      //    let display=document.getElementById("para")
+      function function1(e) {
+        console.log(e);
+        let onchange=e
+        let img = document.createElement("img");
+         var ani= animals.filter(filt=>{
+            return onchange==animal_img.name
+         })
+         
+
+         
+      }
+    </script>
+  </body>
+</html>

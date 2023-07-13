@@ -83,7 +83,7 @@ btn_post.addEventListener("click", function () {
         var row = change.querySelectorAll("td")[2];
         row.innerHTML = input;
         // console.log(row)
-        fetch((fet1 = "https://jsonplaceholder.typicode.com/posts/" + i), {
+        fetch(("https://jsonplaceholder.typicode.com/posts/" + i), {
           method: "PUT",
           body: JSON.stringify({ title: input }),
           headers: {
@@ -93,6 +93,7 @@ btn_post.addEventListener("click", function () {
           .then((response1) => response1.json())
           .then((json) => {
             if (json.status == 200) {
+              row.innerHTML = input;
             }
             console.log(json);
           });
