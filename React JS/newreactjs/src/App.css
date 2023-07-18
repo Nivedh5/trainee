@@ -23,6 +23,7 @@
   height: 70px;
   /* padding: 8px; */
   background-color: aquamarine;
+ 
 }
 #left-div {
   padding: 8px;
@@ -50,6 +51,7 @@
 #center {
   color: white;
   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  /* color: rgb(241, 7, 7); */
 }
 #form {
   width: 40%;
@@ -70,10 +72,10 @@
   height: 150px;
   width: 150px;
 }
-#submit {
+/* #submit {
   background-image: linear-gradient(rgb(185, 187, 244), rgb(36, 29, 172));
   font-weight: 600;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
