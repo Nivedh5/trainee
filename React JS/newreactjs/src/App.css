@@ -63,6 +63,8 @@
   align-items: center;
   /* padding: 24px; */
   box-shadow: 2px 1px 2px 1px;
+  border: 2px solid black;
+  justify-content: space-evenly;
 }
 .inp {
   height: 15px;

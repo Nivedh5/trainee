@@ -1,7 +1,8 @@
-/* div{
+div{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: 600px;
     width: 300px;
-  } */
+  }
   

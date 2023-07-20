@@ -3,7 +3,9 @@ import { FaStar } from "react-icons/fa";
 import { styled } from "styled-components";
 import { useState } from "react";
 import { Blogs } from "./blogsdiv";
-import "./ap.css";
+import { Rate } from "antd";
+
+import {Form} from "./form"
 
 // function App() {
 
@@ -92,45 +94,56 @@ import "./ap.css";
 //    </div>
 //   )
 // }
-function App() {
-  let [arr, setarr] = useState([
-    "helo",
-    "am good",
-    "hope you fine",
-    "how are you?",
-    "need Help?",
-    "please contact us",
-  ]);
-  const [output, setoutput] = useState(" ");
-  const [submit, setsubmit] = useState(" ");
-  const array = (data) => {
-    // console.log(data)
-    setoutput(output + data+" ");
-    // setsubmit(output)
-  };
-  const arr1 = () => {
-    setsubmit(output);
-  };
-  console.log(output);
-  const arr2 = () => {
-    setoutput(" ");
-    setsubmit(" ");
-  };
-  return (
+// function App() {
+//   let [arr, setarr] = useState([
+//     "helo",
+//     "am good",
+//     "hope you fine",
+//     "how are you?",
+//     "need Help?",
+//     "please contact us",
+//   ]);
+//   const [output, setoutput] = useState(" ");
+//   const [submit, setsubmit] = useState(" ");
+//   const array = (data) => {
+//     // console.log(data)
+//     setoutput(output + data+" ");
+//     // setsubmit(output)
+//   };
+//   const arr1 = () => {
+//     setsubmit(output);
+//   };
+//   console.log(output);
+//   const arr2 = () => {
+//     setoutput(" ");
+//     setsubmit(" ");
+//   };
+//   return (
+//     <div>
+//       {arr.map((value, index) => {
+//         return (
+//           <div>
+//             <button onClick={() => array(value)}>{value}</button>
+//           </div>
+//         );
+//       })}
+//       {/* <input  type="text"/> */}
+//       <textarea value={output} rows={10} cols={30} />
+//       <Rate count={3} allowHalf/>
+//       <button onClick={arr1}>Submit</button>
+//       <h1>Output:{submit}</h1>
+//       <button onClick={arr2}>clear</button>
+//     </div>
+//   );
+// }
+
+
+
+function App(){
+  return(
     <div>
-      {arr.map((value, index) => {
-        return (
-          <div>
-            <button onClick={() => array(value)}>{value}</button>
-          </div>
-        );
-      })}
-      {/* <input  type="text"/> */}
-      <textarea value={output} rows={10} cols={30} />
-      <button onClick={arr1}>Submit</button>
-      <h1>Output:{submit}</h1>
-      <button onClick={arr2}>clear</button>
+      <Form/>
     </div>
-  );
+  )
 }
 export default App;
