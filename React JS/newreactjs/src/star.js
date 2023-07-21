@@ -2,7 +2,6 @@ import React from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 const Rating = (props) => {
   let rating=props.props
-  console.log(props)
   const changestars = () => {
     const star = [];
     const roundedRating = rating

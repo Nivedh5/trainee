@@ -4,9 +4,8 @@ import { styled } from "styled-components";
 import { useState } from "react";
 import { Blogs } from "./blogsdiv";
 import { Rate } from "antd";
-
-import {Form} from "./form"
-
+import {Form} from "./dummt"
+import "./App.css"
 // function App() {
 
 // const Star=styled(FaStar)`
@@ -137,13 +136,39 @@ import {Form} from "./form"
 //   );
 // }
 
+const Divmain=styled.div`
+display:flex;
+align-items: center;
+justify-content: center;
+width:100%;
+margin-right: auto;
+margin-left: auto;
+background-color: DodgerBlue;
+overflow: auto;
+
+`
+const Divform=styled.div`
+width:900px;
+display:flex;
+align-items: center;
+justify-content: center;
+background-color: #c2e7ff;;
+border: 2px solid black;
+padding:16px;
+overflow: scroll;
+margin-top:200px
+
+`
 
 
 function App(){
+  // style={{height : dataArray.length > 1 ? 'auto' : '100vh'}}
   return(
-    <div>
+    <Divmain >
+      <Divform>
       <Form/>
-    </div>
+      </Divform>
+    </Divmain>
   )
 }
 export default App;
