@@ -6,6 +6,7 @@ import { Blogs } from "./blogsdiv";
 import { Rate } from "antd";
 import {Form} from "./dummt"
 import "./App.css"
+import Home from "./fetch"
 // function App() {
 
 // const Star=styled(FaStar)`
@@ -159,16 +160,39 @@ overflow: scroll;
 margin-top:200px
 
 `
+const Header=styled.header`
+height:70px;
+display:flex;
+align-items: center;
+justify-content: space-between;
+padding:8px;
+width:100%;
+background-color:whitesmoke;
+position:fixed;
+`
+const Span=styled.span`
+padding:16px;`
 
 
 function App(){
   // style={{height : dataArray.length > 1 ? 'auto' : '100vh'}}
   return(
-    <Divmain >
-      <Divform>
-      <Form/>
-      </Divform>
-    </Divmain>
+    <div>
+      <Header>
+        <div>
+        <Span><b>Home</b></Span>
+        <Span><b>About</b></Span>
+        </div>
+        <span><b>MYNTRA</b></span>
+        <div>
+        <Span><b>Buy Now</b></Span>
+        <Span><b>Contact us</b></Span>
+        </div>
+      </Header>
+      <br/>
+      <br/><br/><br/>
+    <Home/>
+    </div>
   )
 }
 export default App;
