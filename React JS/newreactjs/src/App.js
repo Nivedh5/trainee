@@ -7,6 +7,10 @@ import { Rate } from "antd";
 import {Form} from "./dummt"
 import "./App.css"
 import Home from "./fetch"
+import { Link } from 'react-router-dom';
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import Home1 from "./home";
+import About from "./about";
 // function App() {
 
 // const Star=styled(FaStar)`
@@ -178,20 +182,29 @@ function App(){
   // style={{height : dataArray.length > 1 ? 'auto' : '100vh'}}
   return(
     <div>
-      <Header>
-        <div>
-        <Span><b>Home</b></Span>
-        <Span><b>About</b></Span>
-        </div>
-        <span><b>MYNTRA</b></span>
-        <div>
-        <Span><b>Buy Now</b></Span>
-        <Span><b>Contact us</b></Span>
-        </div>
-      </Header>
-      <br/>
-      <br/><br/><br/>
-    <Home/>
+        <Router>
+        <Header>
+            <div>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+              </div>
+              <span><b>MYNTRA</b></span>
+              <div>
+              <Span><b>Buy Now</b></Span>
+              <Span><b>Contact us</b></Span>
+            </div>
+        </Header> 
+            <Switch>
+              <Route exact path="/">
+                  <Home1 />
+              </Route>
+              <Route path="/about">
+                  <About />
+              </Route>
+            </Switch>
+        </Router>
+
+      
     </div>
   )
 }
