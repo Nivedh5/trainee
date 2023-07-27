@@ -1,16 +1,19 @@
 import { Div } from "./divelement";
 import { FaStar } from "react-icons/fa";
 import { styled } from "styled-components";
-import { useState } from "react";
+import { Component, useState } from "react";
 import { Blogs } from "./blogsdiv";
-import { Rate } from "antd";
-import {Form} from "./dummt"
+import {Form} from "./form"
 import "./App.css"
 import Home from "./fetch"
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import { router } from 'react-router-dom';
+import { BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Home1 from "./home";
 import About from "./about";
+import Life from "./class-component"
+import Cart from "./cart"
+import {FaShoppingBag} from "react-icons/fa"
 // function App() {
 
 // const Star=styled(FaStar)`
@@ -172,40 +175,73 @@ justify-content: space-between;
 padding:8px;
 width:100%;
 background-color:whitesmoke;
-position:fixed;
+// position:fixed;
+`
+const Span1=styled.span`
+padding:16px;
+margin-left:-20px;
+margin-bottom:10px;
+cursor:pointer;
 `
 const Span=styled.span`
-padding:16px;`
+padding:16px;
+`
 
 
 function App(){
   // style={{height : dataArray.length > 1 ? 'auto' : '100vh'}}
+  const [value2,setvalue2]=useState([])
+  const[len,setLen]=useState(0)
   return(
-    <div>
+    // <div>
         <Router>
         <Header>
             <div>
-              <Link to="/">Home</Link>
-              <Link to="/about">About</Link>
+            <Span> <Link to="/">Home</Link></Span>
+            <Span> <Link to="/car">Cart</Link>
+            </Span>
+            <Span1><FaShoppingBag></FaShoppingBag> {len}
+            
+            </Span1>
               </div>
               <span><b>MYNTRA</b></span>
               <div>
-              <Span><b>Buy Now</b></Span>
-              <Span><b>Contact us</b></Span>
+              <Span><Link to="/buy">Buy Now</Link></Span>
+              <Span><Link to="/pro">Contact us</Link></Span>
             </div>
         </Header> 
             <Switch>
               <Route exact path="/">
-                  <Home1 />
+                <Home1/>
               </Route>
-              <Route path="/about">
-                  <About />
+              <Route path="/car" >
+              <About/>
               </Route>
-            </Switch>
-        </Router>
+              <Route path='/buy'>
+                <Home  setdata1={setvalue2}/>
+              </Route>
+              <Route path="/pro">
+                <Form/>
+              </Route>
+              <Route path="/cart">
+                <Cart cart={value2}setLen={setLen} setvalue2={setvalue2} />
+              </Route>
+           </Switch>
+         </Router>
 
-      
-    </div>
+    
   )
 }
 export default App;
+
+// class App extends Component{
+//   render(){
+//  return(
+// <div>
+//  <Life/>
+// </div>
+//   )
+// }
+//   }
+ 
+// export default App;
