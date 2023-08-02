@@ -13,12 +13,12 @@ const initialState = {
         case editValue:
             return{
                 ...state,
-             userInputArray:[...action.payload],
+             userInputArray:action.payload,
             }
         case deleteValue:
             return{
                 ...state,
-                userInputArray:[...action.payload]
+                userInputArray:action.payload
             }    
       default:
         return state;

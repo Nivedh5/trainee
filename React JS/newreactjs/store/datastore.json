@@ -1,32 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-      "images": "https://i.dummyjson.com/data/products/1/1.jpg"
-    },
-    {
-      "id": 2,
-      "title": "iPhone X",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": "500",
-      "discountPercentage": 4.15,
-      "rating": 4.25,
-      "stock": 50,
-      "brand": "Samsung",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
-      "images": "https://i.dummyjson.com/data/products/2/1.jpg"
-    },
-    {
       "id": 3,
       "title": "Samsung Universe 9",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
@@ -38,19 +12,6 @@
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
       "images": "https://i.dummyjson.com/data/products/3/1.jpg"
-    },
-    {
-      "id": 4,
-      "title": "OPPOF19",
-      "description": "OPPO F19 is officially announced on April 2021.",
-      "price": 280,
-      "discountPercentage": 17.91,
-      "rating": 4.3,
-      "stock": 123,
-      "brand": "OPPO",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
-      "images": "https://i.dummyjson.com/data/products/4/1.jpg"
     },
     {
       "id": 5,
