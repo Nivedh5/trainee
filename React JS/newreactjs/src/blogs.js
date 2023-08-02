@@ -165,12 +165,18 @@ function Blogs(blogs) {
   //       console.log("error", error);
   //     });
   // }
-  
-  const addToCart=(data)=>{
+  const addToCart=(data,id)=>{
   console.log(data)
-  blogs.setdata1((cart)=>[...cart,data])
-  
+  console.log(blogs.value2)
+  alert("cart Added")
+  blogs.value2.map((item,i)=>{
+   console.log(item)
+   
+  })
+  blogs?.setdata1((cart)=>[...cart,data])
+  blogs?.setLen(blogs?.value2?.length+1)
   }
+  
 
   return (
     <div>
@@ -187,7 +193,7 @@ function Blogs(blogs) {
               <b>{data.price} $</b>
             </p>
             <br />
-           <Link to="/cart"><Btn onClick={()=>addToCart(data)} >Add to cart</Btn></Link>
+           <Btn onClick={()=>addToCart(data,data?.id)} >Add to cart</Btn>
             <br />
             <Btn onClick={() => deleteclick(index)}>Delete</Btn>
             <br />

@@ -6,9 +6,9 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- <div id="div">
+    <div id="div">
 
-    </div> -->
+    </div>
     <select name="select" id="select1" onchange="function1(this.value)">
       <!-- <p id="para"></p> -->
     </select>
@@ -26,12 +26,20 @@
       ];
       let animal_img = [
         {
-          name: dog,
+          name: "dog",
           img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcREj22c-wMNL5IDmU99v8G7voUl17Yxm0JJqMLqttdPT4DnaB99zqVK7HWiNzjP3aZnzCEf-ikAqb2yiDk",
         },
         {
-            name:cat,
+            name:"cat",
             img:"https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+        },
+        {
+          name:"chicken",
+          img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStxAwocQrxDVpUYLlvpTFfhlQn3qaLYULAjg&usqp=CAU"
+        },
+        {
+          name:"rabbit",
+          img:"https://images.pexels.com/photos/4001296/pexels-photo-4001296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         }
       ];
       var container = document.getElementById("div");
@@ -49,15 +57,22 @@
       let choice = document.getElementById("select1");
       //    let display=document.getElementById("para")
       function function1(e) {
+        // console.clear()
         console.log(e);
         let onchange=e
+        let div=document.getElementById("div")
         let img = document.createElement("img");
-         var ani= animals.filter(filt=>{
-            return onchange==animal_img.name
-         })
-         
-
-         
+       let ani= animal_img.filter(function(animal){
+          return animal.name==onchange
+       }).map(function(animal){
+        return animal.img
+       })
+        //  console.log(ani)
+         img.src=ani[0]
+        //  console.log(ani.img)
+        img.style.width="300px"
+        img.style.height="300px"
+         div.appendChild(img)
       }
     </script>
   </body>

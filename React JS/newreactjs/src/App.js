@@ -173,8 +173,8 @@ display:flex;
 align-items: center;
 justify-content: space-between;
 padding:8px;
-width:100%;
-background-color:whitesmoke;
+width:99%;
+background-color:#aa003f;
 // position:fixed;
 `
 const Span1=styled.span`
@@ -185,7 +185,12 @@ cursor:pointer;
 `
 const Span=styled.span`
 padding:16px;
+
 `
+const Link1=styled(Link)`
+color:white;
+font-weight:600`
+
 
 
 function App(){
@@ -197,8 +202,8 @@ function App(){
         <Router>
         <Header>
             <div>
-            <Span> <Link to="/">Home</Link></Span>
-            <Span> <Link to="/car">Cart</Link>
+            <Span> <Link1 to="/">Home</Link1></Span>
+            <Span> <Link1 to="/car">Cart</Link1>
             </Span>
             <Span1><FaShoppingBag></FaShoppingBag> {len}
             
@@ -206,8 +211,8 @@ function App(){
               </div>
               <span><b>MYNTRA</b></span>
               <div>
-              <Span><Link to="/buy">Buy Now</Link></Span>
-              <Span><Link to="/pro">Contact us</Link></Span>
+              <Span><Link1 to="/buy">Buy Now</Link1></Span>
+              <Span><Link1 to="/pro">Contact us</Link1></Span>
             </div>
         </Header> 
             <Switch>
@@ -215,16 +220,16 @@ function App(){
                 <Home1/>
               </Route>
               <Route path="/car" >
-              <About/>
+              <Cart cart={value2} setvalue2={setvalue2}setLen={setLen} />
               </Route>
               <Route path='/buy'>
-                <Home  setdata1={setvalue2}/>
+                <Home setLen={setLen} value2={value2}  setdata1={setvalue2}/>
               </Route>
               <Route path="/pro">
                 <Form/>
               </Route>
               <Route path="/cart">
-                <Cart cart={value2}setLen={setLen} setvalue2={setvalue2} />
+                <Cart cart={value2} setvalue2={setvalue2} setLen={setLen} />
               </Route>
            </Switch>
          </Router>
