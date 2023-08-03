@@ -1,4 +1,4 @@
-import { Fetch_Req,Fetch_Success,Fetch_Fail } from "./fetchType";
+import { Fetch_Req,Fetch_Success,Fetch_Fail, Post_Req,Error_Req } from "./fetchType";
 export const initialState={
     loading:false,
     users:[],
@@ -6,7 +6,7 @@ export const initialState={
 }
 
 const reducer=(state=initialState,action)=>{
-    switch(action.type){
+    switch(action?.type){
         case Fetch_Req:
             return{
               ...state,loading:true
@@ -14,16 +14,30 @@ const reducer=(state=initialState,action)=>{
         case Fetch_Success:
             return{
                 loading:false,
-                users:action.payload,
+                users:action?.payload,
                 error:""
             }    
         case Fetch_Fail:
             return{
                 loading:false,
                 users:[],
-                error:action.payload
+                error:action?.payload
             }    
             default:return state;
+        case Post_Req:
+            const user=state.users.concat(action.payload)
+            return{
+                loading:false,
+                users:{...state,user},
+                error:" "
+            }     
+         case Error_Req:
+            return{
+                loading:false,
+                users:[],
+                error:action?.payload,
+            }
+
     }
 }
 export default reducer
