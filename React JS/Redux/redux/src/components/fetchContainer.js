@@ -24,7 +24,7 @@ function Container() {
    const [pending,setPending]=useState(0)
     useEffect(()=>{
       dispatch(fetchUsers())
-    },[pending])
+    },[])
 
     const[inputValue,setInputValue]=useState({})
     const users=useSelector(state=>state?.users)
@@ -39,12 +39,12 @@ function Container() {
     const handleSubmit=(e)=>{
        
         dispatch(postUser(inputValue))
-       setPending(pending+1)
+    //    setPending(pending+1)
         // setPending(pending+1)
        
     }
     const handleDelete=(e)=>{
-    setPending(pending+1)
+    // setPending(pending+1)
     dispatch(deleteReq(e))
     }
  
@@ -67,7 +67,7 @@ function Container() {
                             
                             <h3>{item?.name}</h3>
                             <h3>{item?.email}</h3>
-                            <Delete onClick={()=>handleDelete(item.id)} />
+                            <Delete onClick={()=>handleDelete(index)} />
                             </Div>
                         )
                     })

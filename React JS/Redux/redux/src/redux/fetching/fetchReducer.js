@@ -25,12 +25,10 @@ const reducer=(state=initialState,action)=>{
             }    
             default:return state;
         case Post_Req:
-            const user=state?.users.concat(action.payload)
-            return{
-                loading:false,
-                users:{...state,user},
-                error:" "
-            }     
+            
+        console.log("going to add",action.payload)
+        return { ...state, users: state.users.concat(action.payload) };
+
          case Error_Req:
             return{
                 loading:false,
@@ -38,10 +36,10 @@ const reducer=(state=initialState,action)=>{
                 error:action?.payload,
             }
           case  Delete_Req:
+            console.log("deleting index",action.payload)
             return{
-                loading:false,
-                users:action?.payload,
-                error:" "
+               
+                ...state, users:state.users.filter((item, Index) => Index !== action.payload)
             }
 
     }

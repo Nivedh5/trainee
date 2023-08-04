@@ -72,7 +72,7 @@ const YourComponent = () => {
     let clearData={name:" ",email:" "}
     setData(clearData)
   }
-  console.log("")
+  
   
   return (
     
