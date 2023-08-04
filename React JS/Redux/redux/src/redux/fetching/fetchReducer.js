@@ -1,4 +1,4 @@
-import { Fetch_Req,Fetch_Success,Fetch_Fail, Post_Req,Error_Req } from "./fetchType";
+import { Fetch_Req,Fetch_Success,Fetch_Fail, Post_Req,Error_Req,Delete_Req} from "./fetchType";
 export const initialState={
     loading:false,
     users:[],
@@ -25,7 +25,7 @@ const reducer=(state=initialState,action)=>{
             }    
             default:return state;
         case Post_Req:
-            const user=state.users.concat(action.payload)
+            const user=state?.users.concat(action.payload)
             return{
                 loading:false,
                 users:{...state,user},
@@ -36,6 +36,12 @@ const reducer=(state=initialState,action)=>{
                 loading:false,
                 users:[],
                 error:action?.payload,
+            }
+          case  Delete_Req:
+            return{
+                loading:false,
+                users:action?.payload,
+                error:" "
             }
 
     }

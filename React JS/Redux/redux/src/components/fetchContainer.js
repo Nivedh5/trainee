@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchUsers, postUser } from "../redux/fetching/fetchAction";
+import { fetchUsers, postUser,deleteReq } from "../redux/fetching/fetchAction";
 import{ useDispatch, useSelector}from "react-redux"
 import { styled } from "styled-components";
+import {DeleteOutlined} from '@ant-design/icons';
+
 function Container() {
 
     const Div=styled.div`
@@ -9,29 +11,41 @@ function Container() {
     width:100%;
     justify-content:space-around;
     border:1px solid black;
+    align-items:center;
+    `
+
+    const Delete=styled(DeleteOutlined)`
+    color:red;
+    cursor:pointer;
     `
     const Div1=styled.div`
     border:1px solid black;`
    const dispatch=useDispatch()
+   const [pending,setPending]=useState(0)
     useEffect(()=>{
       dispatch(fetchUsers())
-    },[])
+    },[pending])
 
     const[inputValue,setInputValue]=useState({})
-    const users=useSelector(state=>state.users)
-    const loading=useSelector(state=>state.loading)
-    const error=useSelector(state=>state.error)
+    const users=useSelector(state=>state?.users)
+    const loading=useSelector(state=>state?.loading)
+    const error=useSelector(state=>state?.error)
 
     const handleChange=(e)=>{
-        const {name,value}=e.target
+        const {name,value}=e?.target
         setInputValue({...inputValue,[name]:value})
     }
 
     const handleSubmit=(e)=>{
        
         dispatch(postUser(inputValue))
+       setPending(pending+1)
         // setPending(pending+1)
        
+    }
+    const handleDelete=(e)=>{
+    setPending(pending+1)
+    dispatch(deleteReq(e))
     }
  
     console.log(users)
@@ -46,13 +60,14 @@ function Container() {
             </Div>
                 {
                     
-                    users && users.map((item)=>{
+                    users && users.map((item,index)=>{
                         return(
                             
                             <Div>
                             
                             <h3>{item?.name}</h3>
                             <h3>{item?.email}</h3>
+                            <Delete onClick={()=>handleDelete(item.id)} />
                             </Div>
                         )
                     })
@@ -63,7 +78,6 @@ function Container() {
                 <input placeholder="enter name" name="name"  onChange={handleChange}/>
                 <input placeholder="enter email" name="email" onChange={handleChange}/>
                 <button onClick={handleSubmit}>Submit</button>
-
             </div>
         </div>
      )

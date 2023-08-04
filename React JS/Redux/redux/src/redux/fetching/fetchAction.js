@@ -1,4 +1,4 @@
-import { Fetch_Req,Fetch_Success,Fetch_Fail, Post_Req,Error_Req } from "./fetchType";
+import { Fetch_Req,Fetch_Success,Fetch_Fail, Post_Req,Error_Req,Delete_Req} from "./fetchType";
 import axios from "axios"
 
 export const FetchRequest=()=>{
@@ -30,12 +30,17 @@ export const FetchError=(error)=>{
         payload:error
     }
 }
-
+export const Delete_Request=(value)=>{
+    return{
+        type:Delete_Req,
+        payload:value
+    }
+}
 
 export const fetchUsers=()=>{
     return(dispatch)=>{
       dispatch(FetchRequest)
-      axios.get("https://jsonplaceholder.typicode.com/users")
+      axios.get("http://localhost:8000/product")
       .then(res=>{
         const user=res?.data;
         dispatch(FetchSuccess(user))
@@ -49,14 +54,22 @@ export const fetchUsers=()=>{
 export const postUser=(users)=>{
     console.log('data--123',users)
 return(dispatch)=>{
-    axios.post("https://jsonplaceholder.typicode.com/users",users)
+   return axios.post("http://localhost:8000/product",users)
     .then(res=>{
         console.log(res)
-       dispatch(FetchAdd(res.data))
+       dispatch(FetchAdd(res?.data))
     })
     .catch(error=>{
         const errormsg=error?.message
         dispatch(Error_Req(errormsg))
     })
 }
+}
+export const deleteReq=(value)=>{
+    return(dispatch)=>{
+        axios.delete("http://localhost:8000/product/"+value)
+        .then(res=>{
+            dispatch(Delete_Request(res.data))
+        })
+    }
 }
