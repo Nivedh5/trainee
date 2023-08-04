@@ -25,11 +25,11 @@ const reducer=(state=initialState,action)=>{
             }    
             default:return state;
         case Post_Req:
-            const user=state?.users.concat(action.payload)
+            
             return{
                 loading:false,
-                users:{...state,user},
-                error:" "
+                users:state?.users.concat(action.payload),
+                error:""
             }     
          case Error_Req:
             return{
@@ -41,7 +41,7 @@ const reducer=(state=initialState,action)=>{
             return{
                 loading:false,
                 users:action?.payload,
-                error:" "
+                error:""
             }
 
     }

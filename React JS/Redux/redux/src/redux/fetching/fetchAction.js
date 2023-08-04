@@ -40,7 +40,7 @@ export const Delete_Request=(value)=>{
 export const fetchUsers=()=>{
     return(dispatch)=>{
       dispatch(FetchRequest)
-      axios.get("http://localhost:8000/product")
+      axios.get("https://jsonplaceholder.typicode.com/users")
       .then(res=>{
         const user=res?.data;
         dispatch(FetchSuccess(user))
@@ -54,7 +54,7 @@ export const fetchUsers=()=>{
 export const postUser=(users)=>{
     console.log('data--123',users)
 return(dispatch)=>{
-   return axios.post("http://localhost:8000/product",users)
+   return axios.post("https://jsonplaceholder.typicode.com/users",users)
     .then(res=>{
         console.log(res)
        dispatch(FetchAdd(res?.data))
@@ -67,9 +67,9 @@ return(dispatch)=>{
 }
 export const deleteReq=(value)=>{
     return(dispatch)=>{
-        axios.delete("http://localhost:8000/product/"+value)
+        axios.delete("https://jsonplaceholder.typicode.com/users/"+value)
         .then(res=>{
-            dispatch(Delete_Request(res.data))
+            dispatch(Delete_Request(value))
         })
     }
 }
