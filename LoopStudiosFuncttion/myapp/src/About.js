@@ -1,138 +1,282 @@
-import { styled } from "styled-components"
-import { useState } from "react"
-import { Button,Input,} from 'antd';
-import{EditOutlined,DeleteOutlined} from'@ant-design/icons'
-import { DownloadOutlined } from '@ant-design/icons';
+import { styled } from "styled-components";
+import { useState } from "react";
+import { Button, Input } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DownloadOutlined } from "@ant-design/icons";
+import Svg from "./Svgs/svg.svg"
+import MainSvg from "./Svgs/Svg";
 
-// import 'antd/dist/antd.css'; 
-const Span=styled.span`
-padding:16px;
-color: hsl(0, 0%, 100%);
-font-family: 'Alata', sans-serif;
-font-size:15px;
-font-weight:300;
-cursor:pointer;
-@media (max-width:400px){
-display:none;
-}
-`
-const Body=styled.div`
-margin-left:400px;
-margin-top:200px;`
+// import 'antd/dist/antd.css';
+const Span = styled.span`
+  padding: 16px;
+  color: hsl(0, 0%, 100%);
+  font-family: "Alata", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  cursor: pointer;
+  @media (max-width: 400px) {
+    display: none;
+  }
+`;
+const MainBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const Body = styled.div`
+  // margin-left:400px;
+  // margin-top:200px;
+  border: 1px solid black;
+  margin: 20px;
+  padding: 20px;
+  background-color:whitesmoke;
+  &:hover {
+    scale: 1.05;
+  }
+`;
 // const Save=styled.span`
 // padding:8px;`
-const Main=styled.div`
-display:flex;
-justify-content:space-between;
-width:500px;
-`
-const EditMain=styled.div`
-display:flex;
-justify-content:space-between;
-width:500px;`
+const Main = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  margin: 20px;
+  
+`;
+const EditMain = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+`;
 
-const InputDiv=styled.div`
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-width:500px;`
-const AddDiv=styled.div`
-display:flex;
-justify-content:center;
-width:500px;`
-const Field=styled.div`
-display:flex;
-align-Items:center;
-margin:20px;`
-const Products=styled.span`
-margin-left:20px;
-margin-top:6px;`
+const InputDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  width: 500px;
+`;
+const AddDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  margin: 20px;
+`;
+const Field = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 700px;
+  margin: 30px;
+`;
+const Products = styled.span`
+  margin-left: 20px;
+  margin-top: 6px;
+`;
+const CancelSpan = styled.span`
+  margin-right: 8px;
+  color: blue;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 
-function About(){
-    // const[inputStore,setInputStore]=useState([{value:''}])
-    const [inputFields, setInputFields] = useState([{ id:0, value: '' }]);
-    const [Render,SetRender]=useState(true)
-    const addInputField = () => {
-        setInputFields([...inputFields, { id:inputFields.length, value: '' }]); 
-    }
-    const handleInputChange = (id, event) => {
-        const newInputFields = inputFields.map(object => {
-          if (object.id === id) {
-            return { ...object, value: event.target.value };
-          }
-          return object;
-        });
-        setInputFields(newInputFields);
-    }
-      const handleClick=(event)=>{
-        event.preventDefault()
-        SetRender(false)
-      }
-      const handleEdit=()=>{
-        SetRender(true)
-      }
-      const handleDelete=(id)=>{
-        const newData = inputFields.filter((Field)=>Field.id!==id);
-        setInputFields(newData)
+const InputSpan = styled.span`
+  width: 600px;
+`;
+const SvgDiv=styled.div`
+display:flex;`
+const SvgSpan=styled.span`
+margin-top:15px;
+margin-right:12px;
+color:grey;`
 
-       
+function About(props) {
+  console.log(props);
+  const { Render, SetRender } = props;
+  // const[inputStore,setInputStore]=useState([{value:''}])
+  const [inputFields, setInputFields] = useState([{ id: 0, value: "" }]);
+  // const[save,setSave]=useState(true)
+  // const [Render,SetRender]=useState(true)
+  const addInputField = () => {
+    setInputFields([...inputFields, { id: inputFields.length, value: "" }]);
+  };
+  const handleInputChange = (id, event) => {
+  const newInputFields = inputFields.map((object) => {
+      if (object.id === id) {
+        return { ...object, value: event.target.value };
       }
-    return(
-        <Body>
-          {Render?<div>
-            <form onSubmit={handleClick}>
-           <Main>
-            <div>
-            <span>Products & Service offered</span>
-            </div>
-            <div>
-            <span>Cancel</span>
-            <Button type="primary" htmlType="submit" >Save</Button>
-            </div>
-           </Main>
-           <InputDiv>
-           {inputFields.map((inputValue, index) => (
-            <Field>
-         <span><Input
-          key={index}
-          type="text"
-          value={inputValue.value}
-          onChange={(event) => handleInputChange(index, event)
-        }
-          placeholder="Enter Products and Services"
-        /> </span> 
-        <DeleteOutlined onClick={()=>handleDelete(inputValue.id)}  />
-        </Field>
-        ))}
+      return object;
+    })
+
+    setInputFields(newInputFields);
+  };
+  const handleClick = (event) => {
+    event.preventDefault();
+    SetRender(false);
+    // setSave(true)
+  };
+  const handleEdit = () => {
+    SetRender(true);
+  };
+  const handleDelete = (id) => {
+    const newData = inputFields.filter((Field) => Field.id !== id);
+    setInputFields(newData);
+  };
+  const handleCancel = () => {
+    SetRender(false);
+    // setSave(false)
+    setInputFields(inputFields)
+  };
+  return (
+    <MainBody>
         
-           </InputDiv>
-           </form>
-           <AddDiv>
-
-      {/* <Button type="primary" shape="circle" icon="plus"  /> */}
-      <Button type="primary" shape="circle" icon={<DownloadOutlined onClick={addInputField} />}  />
-
-            <Products>Add Products</Products>
-           </AddDiv>
-           </div>
-           :
-           <div>
+      <Body>
+        <div>
+          <div>
+            <EditMain>
+              <div>
+                <span>Description</span>
+                <h5>
+                  Despite being an electronic product (bound to have a lot of
+                  technical jargon), the brand has used an informal tone and
+                  simple language to highlight the features and benefits of the
+                  product. This is important because it makes the product
+                  description quite engaging and conversational.{" "}
+                </h5>
+              </div>
+              <div>
+                <span>
+                  <EditOutlined  />
+                </span>
+              </div>
+            </EditMain>
+           
+          </div>
+        </div>
+      </Body>
+      <Body>
+        <div>
+          <div>
+            <EditMain>
+              <div>
+                <span>NPS SCORE</span>
+                <h6>
+                  Net Promoter Score:0
+                </h6>
+                <div>
+               
+                </div>
+              </div>
+              <div>
+                <span>
+                  <EditOutlined  />
+                </span>
+              </div>
+            </EditMain>
+           
+          </div>
+        </div>
+      </Body>
+      <Body>
+       <div>
             <div>
-          <EditMain>
-             <div>
-            <span>Products & Service offered</span>
+              <EditMain>
+                <div>
+                  <span>Year Started</span>
+                </div>
+                <div>
+                  <span>
+                    <EditOutlined/>
+                  </span>
+                </div>
+              </EditMain>
             </div>
-            <div>
-            <span><EditOutlined onClick={handleEdit}/></span>
-            </div>
-         </EditMain>
-                {inputFields.map((obj)=>(
-                   <h3>{obj.value}</h3>
+          </div>
+          </Body>
+      <Body>
+        {Render ? (
+          <div>
+            <form onSubmit={handleClick}>
+              <Main>
+                <div>
+                  <span>Products & Service offered</span>
+                </div>
+                <div>
+                  <CancelSpan onClick={handleCancel}> Cancel</CancelSpan>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    style={{ height: "30px", width: "70px" }}
+                  >
+                    Save
+                  </Button>
+                </div>
+              </Main>
+              <InputDiv>
+                {inputFields.map((inputValue, index) => (
+                  <Field>
+                    <InputSpan>
+                      <Input
+                        key={index}
+                        type="text"
+                        required
+                        value={inputValue.value}
+                        onChange={(event) => handleInputChange(index, event)}
+                        placeholder="Enter Products and Services"
+                      />{" "}
+                    </InputSpan>
+                    <DeleteOutlined
+                      onClick={() => handleDelete(inputValue.id)}
+                    />
+                  </Field>
                 ))}
+              </InputDiv>
+            </form>
+            <AddDiv>
+              {/* <Button type="primary" shape="circle" icon="plus"  /> */}
+              <Button
+                type="primary"
+                shape="circle"
+                icon={<DownloadOutlined onClick={addInputField} />}
+              />
+
+              <Products>Add Products</Products>
+            </AddDiv>
+          </div>
+        ) : (
+          <div>
+            <div>
+              <EditMain>
+                <div>
+                  <span>Products & Service offered</span>
+                </div>
+                <div>
+                  <span>
+                    <EditOutlined onClick={handleEdit} />
+                  </span>
+                </div>
+              </EditMain>
+              {inputFields.map((obj) => {
+                return(
+                  <>
+                  {
+                    obj.value?<SvgDiv><SvgSpan><MainSvg/></SvgSpan>
+                    <SvgSpan>{obj.value}</SvgSpan></SvgDiv>:("")
+                  }
+                  </>
+                  
+                )
+                
+})}
+
             </div>
-            </div>}
-         </Body>
-    )
+          </div>
+        )}
+      </Body>
+    </MainBody>
+  );
 }
-export default About
+export default About;

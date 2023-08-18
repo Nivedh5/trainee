@@ -12,11 +12,13 @@ const MainBody=styled.div`
 width:100%;
 height:100vh;`
 
-function LandingPage(){
+function LandingPage(props){
+    const {Render,SetRender,auth,setAuth}=props
+    
     return(
         <div>
         <MainBody>
-       <MainProfile/>
+       <MainProfile Render={Render} SetRender={SetRender} auth={auth} setAuth={setAuth}/>
        <BodySection/>
         <Grid/>
        <FooterSection/>

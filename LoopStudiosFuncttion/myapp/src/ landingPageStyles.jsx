@@ -17,6 +17,7 @@ import mobileImg5 from "./Images/mobileImages/image-from-above.jpg"
 import mobileImg6 from "./Images/mobileImages/image-pocket-borealis.jpg"
 import mobileImg7 from "./Images/mobileImages/image-curiosity.jpg"
 import mobileImg8 from "./Images/mobileImages/image-fisheye.jpg";
+import { Link } from "react-router-dom"
 
 export const Header=styled.header`
 height:26%;
@@ -62,6 +63,9 @@ display:none;
     display:block;
    
 }
+`
+export const LinkTag=styled(Link)`
+color:white;
 `
 export const  MenuItem=styled.div`
 width:250px;

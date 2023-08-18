@@ -4,7 +4,7 @@ ProfileContainer,
 Span,
 MenuItem,
 Li,
-Ul,
+Ul,LinkTag,
 Menu,
 Menus,
 BurgerSvg,
@@ -19,12 +19,26 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
-function MainProfile(){
+function MainProfile(props){
     const [btnClick,setClick]=useState(false)
+    const {Render,SetRender,auth,setAuth}=props
     
     const DisplayList =()=>{
         setClick(!btnClick)
         
+    }
+    const handleRender=()=>{
+        SetRender(false)
+    }
+
+   
+
+    const Logout = ()=>{
+        setAuth(false)
+    }
+
+    const Login = ()=>{
+        setAuth(true)
     }
     
     return(
@@ -34,12 +48,13 @@ function MainProfile(){
             <TitleSpan>loopstudios</TitleSpan>
             </leftDiv>
             <rightDiv>
-       <Span><Link to="/About">About</Link></Span>
+       <Span onClick={handleRender}><LinkTag to="/About">About</LinkTag></Span>
        <Span>Home</Span>
             <Span>Careers</Span>
             <Span>Events</Span>
-          <Span><Link to="/Action">Products</Link></Span>
+          <Span><LinkTag to="/Action">Products</LinkTag></Span>
             <Span>Support</Span>
+            {auth?<Span><button onClick={Logout}>log out</button></Span>:<Span><button onClick={Login}>log in</button></Span>}
             <BurgerSvg onClick={DisplayList} ><img src={burgerSvg} alt="burger"/></BurgerSvg>
             </rightDiv>
         </Header>
