@@ -6,7 +6,6 @@ import { DownloadOutlined } from "@ant-design/icons";
 import Svg from "./Svgs/svg.svg"
 import MainSvg from "./Svgs/Svg";
 
-// import 'antd/dist/antd.css';
 const Span = styled.span`
   padding: 16px;
   color: hsl(0, 0%, 100%);
@@ -23,6 +22,7 @@ const MainBody = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px solid rgba(228, 231, 234, 0.5);
 `;
 const Body = styled.div`
   // margin-left:400px;
@@ -30,9 +30,10 @@ const Body = styled.div`
   border: 1px solid black;
   margin: 20px;
   padding: 20px;
+  width:655px;
   background-color:whitesmoke;
   &:hover {
-    scale: 1.05;
+    scale: 1.03;
   }
 `;
 // const Save=styled.span`
@@ -40,7 +41,7 @@ const Body = styled.div`
 const Main = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 700px;
+  width: 600px;
   margin: 20px;
   
 `;
@@ -60,14 +61,14 @@ const InputDiv = styled.div`
 const AddDiv = styled.div`
   display: flex;
   justify-content: center;
-  width: 700px;
+  width: 600px;
   margin: 20px;
 `;
 const Field = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 700px;
+  width: 550px;
   margin: 30px;
 `;
 const Products = styled.span`
@@ -84,7 +85,7 @@ const CancelSpan = styled.span`
 `;
 
 const InputSpan = styled.span`
-  width: 600px;
+  width: 500px;
 `;
 const SvgDiv=styled.div`
 display:flex;`
@@ -95,13 +96,13 @@ color:grey;`
 
 function About(props) {
   console.log(props);
-  const { Render, SetRender } = props;
+ const{edit,setEdit}=props;
   // const[inputStore,setInputStore]=useState([{value:''}])
-  const [inputFields, setInputFields] = useState([{ id: 0, value: "" }]);
+  const [inputFields, setInputFields] = useState([{ id: 0, value: "",originalValue:'' }]);
   // const[save,setSave]=useState(true)
   // const [Render,SetRender]=useState(true)
   const addInputField = () => {
-    setInputFields([...inputFields, { id: inputFields.length, value: "" }]);
+    setInputFields([...inputFields, { id: inputFields.length, value: "",orginalValue:''}]);
   };
   const handleInputChange = (id, event) => {
   const newInputFields = inputFields.map((object) => {
@@ -115,21 +116,26 @@ function About(props) {
   };
   const handleClick = (event) => {
     event.preventDefault();
-    SetRender(false);
-    // setSave(true)
+    setEdit(false);
+     const updatedInputFields = inputFields.map((field) => ({
+      ...field,
+      originalValue: field.value,
+    }));
+    setInputFields(updatedInputFields);
   };
   const handleEdit = () => {
-    SetRender(true);
+    setEdit(true);
   };
   const handleDelete = (id) => {
     const newData = inputFields.filter((Field) => Field.id !== id);
     setInputFields(newData);
   };
   const handleCancel = () => {
-    SetRender(false);
-    // setSave(false)
-    setInputFields(inputFields)
-  };
+    setEdit(false);
+    const resetInputFields = inputFields.map((field) => ({ ...field, value: field.originalValue }));
+    setInputFields(resetInputFields);
+      }
+  
   return (
     <MainBody>
         
@@ -197,7 +203,7 @@ function About(props) {
           </div>
           </Body>
       <Body>
-        {Render ? (
+        {edit ? (
           <div>
             <form onSubmit={handleClick}>
               <Main>
@@ -209,6 +215,7 @@ function About(props) {
                   <Button
                     type="primary"
                     htmlType="submit"
+                    id="save"
                     style={{ height: "30px", width: "70px" }}
                   >
                     Save
@@ -217,18 +224,20 @@ function About(props) {
               </Main>
               <InputDiv>
                 {inputFields.map((inputValue, index) => (
-                  <Field>
+                  <Field className="input-container">
                     <InputSpan>
                       <Input
                         key={index}
                         type="text"
                         required
                         value={inputValue.value}
+                        className="about-input"
                         onChange={(event) => handleInputChange(index, event)}
                         placeholder="Enter Products and Services"
                       />{" "}
                     </InputSpan>
-                    <DeleteOutlined
+                    <DeleteOutlined 
+                    id="delete"
                       onClick={() => handleDelete(inputValue.id)}
                     />
                   </Field>
@@ -240,7 +249,7 @@ function About(props) {
               <Button
                 type="primary"
                 shape="circle"
-                icon={<DownloadOutlined onClick={addInputField} />}
+                icon={<DownloadOutlined className="add-button" onClick={addInputField} />}
               />
 
               <Products>Add Products</Products>
@@ -255,7 +264,7 @@ function About(props) {
                 </div>
                 <div>
                   <span>
-                    <EditOutlined onClick={handleEdit} />
+                    <EditOutlined id="edit" onClick={handleEdit} />
                   </span>
                 </div>
               </EditMain>

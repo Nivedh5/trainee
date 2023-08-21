@@ -17,29 +17,43 @@ import burgerSvg from "./Svgs/icon-hamburger.svg";
 import Close from "./Svgs/icon-close.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { Button, Modal, Form, Input } from 'antd';
 
 function MainProfile(props){
     const [btnClick,setClick]=useState(false)
-    const {Render,SetRender,auth,setAuth}=props
-    
+    const [visible, setVisible] = useState(false);
+    const [isLoggedin, setIsLoggedin] = useState(false);
+    const [form] = Form.useForm();
+    const{Render,SetRender,auth,setAuth}=props
     const DisplayList =()=>{
         setClick(!btnClick)
         
     }
-    const handleRender=()=>{
-        SetRender(false)
-    }
-
-   
-
-    const Logout = ()=>{
-        setAuth(false)
-    }
-
-    const Login = ()=>{
-        setAuth(true)
-    }
+    const handleLogin = () => {
+        const { username, password } = form.getFieldsValue();
+    
+        // Custom validation logic
+        if (username === 'nivedh' && password === 'nivedh') {
+          setIsLoggedin(true);
+          setVisible(false);
+          
+          setAuth(true)
+        } else {
+          setAuth(false)
+         setTimeout(() => {
+            alert("username or Password is wrong")
+          }, );
+        }
+      };
+    
+      const showModal = () => {
+        setVisible(true);
+      };
+    
+      const handleCancel = () => {
+        setVisible(false);
+        form.resetFields();
+      };
     
     return(
 <ProfileContainer>
@@ -48,13 +62,31 @@ function MainProfile(props){
             <TitleSpan>loopstudios</TitleSpan>
             </leftDiv>
             <rightDiv>
-       <Span onClick={handleRender}><LinkTag to="/About">About</LinkTag></Span>
+       <Span>About</Span>
        <Span>Home</Span>
             <Span>Careers</Span>
             <Span>Events</Span>
-          <Span><LinkTag to="/Action">Products</LinkTag></Span>
+          <Span id="profile" onClick={showModal}>Profile Login</Span>
+          <Modal
+            title="Login"
+            visible={visible}
+            onCancel={handleCancel}
+            footer={[
+             <Link to="/Profile"> <Button key="login" type="primary" id="login-button" onClick={handleLogin}>
+                Login
+              </Button></Link>,
+            ]}
+          >
+            <Form form={form}>
+              <Form.Item  label="Username" name="username" rules={[{ required: true, message: 'Please enter your username.' }]}>
+                <Input id="username" placeholder="Enter your username" />
+              </Form.Item>
+              <Form.Item  label="Password" name="password" rules={[{ required: true, message: 'Please enter your password.' }]}>
+                <Input.Password id="password" placeholder="Enter your password" />
+              </Form.Item>
+            </Form>
+          </Modal>
             <Span>Support</Span>
-            {auth?<Span><button onClick={Logout}>log out</button></Span>:<Span><button onClick={Login}>log in</button></Span>}
             <BurgerSvg onClick={DisplayList} ><img src={burgerSvg} alt="burger"/></BurgerSvg>
             </rightDiv>
         </Header>
