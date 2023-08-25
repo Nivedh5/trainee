@@ -1,0 +1,6 @@
+export const Fetch_Req="Fetch_Req"
+export const Fetch_Success="Fetch_Sucess"
+export const Fetch_Fail="Fetch_Fail"
+export const Post_Req="Post_Req"
+export const Error_Req="Error_Req"
+export const Delete_Req="Delete_Req"
